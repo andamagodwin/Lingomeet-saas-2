@@ -8,7 +8,7 @@ import Usage from "./components/Usage";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-green-500">
       <Header />
       <Hero />
       <About/>
