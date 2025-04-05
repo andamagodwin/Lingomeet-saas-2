@@ -24,7 +24,7 @@ const Header = () => {
       }`}
     >
       <div className="flex items-center">
-        <img src="./logo.svg" alt="logo" className="" />
+        <img src="./logo-Horizontal-White.svg" width={300} alt="logo" className="" />
       </div>
       <Nav />
     </div>
