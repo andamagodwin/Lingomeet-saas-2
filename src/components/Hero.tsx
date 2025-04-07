@@ -1,6 +1,8 @@
+
+
 const Hero = () => {
     return (
-      <div className="bg-gradient-to-r from-green-500 to-green-700 flex justify-center items-center w-full h-[95vh] pt-20 px-8 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-green-500 to-green-700 flex justify-center items-center w-full h-[95vh] pt-96 px-8 relative overflow-hidden md:pt-40">
         {/* Subtle background elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-64 h-64 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
@@ -14,7 +16,7 @@ const Hero = () => {
               Google Meet Add-on
             </div>
   
-            <h1 className="text-5xl font-bold leading-tight">Real-Time Transcription & Translation for Google Meet</h1>
+            <h1 className="text-5xl font-bold leading-tight">A new approach to online Education</h1>
   
             <div className="w-20 h-1 bg-green-300 rounded-full"></div>
   
@@ -24,9 +26,12 @@ const Hero = () => {
             </p>
   
             <div className="flex flex-wrap gap-4">
-              <button className="bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                Get Started
-              </button>
+              <a href="https://dashboard.lingomeet.space">
+                <button className="bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                  Get Started
+                </button>
+              </a>
+              
               <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition duration-300">
                 Learn More
               </button>
@@ -34,18 +39,7 @@ const Hero = () => {
   
             <div className="pt-4">
               <div className="flex items-center gap-2 text-green-100 text-sm">
-                <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-green-300 border-2 border-green-700 flex items-center justify-center text-green-800 text-xs font-bold">
-                    JD
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-green-200 border-2 border-green-700 flex items-center justify-center text-green-800 text-xs font-bold">
-                    KM
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-green-100 border-2 border-green-700 flex items-center justify-center text-green-800 text-xs font-bold">
-                    TS
-                  </div>
-                </div>
-                <span>Join 2,500+ students already using Lingomeet</span>
+                
               </div>
             </div>
           </div>

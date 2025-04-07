@@ -19,12 +19,12 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 transition-all duration-300 ${
         isScrolled ? "bg-Green/80 backdrop-blur-2xl" : "bg-gradient-to-r from-green-500 to-green-700"
       }`}
     >
       <div className="flex items-center">
-        <img src="./logo.svg" alt="logo" className="" />
+        <img src="./logo-white.png" width={50} height={50}   alt="logo" />
       </div>
       <Nav />
     </div>
