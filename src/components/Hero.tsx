@@ -32,9 +32,7 @@ const Hero = () => {
                 </button>
               </a>
               
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition duration-300">
-                Learn More
-              </button>
+              
             </div>
   
             <div className="pt-4">
