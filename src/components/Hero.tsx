@@ -25,7 +25,7 @@ const Hero = () => {
               into your local language. Perfect for students and professionals alike!
             </p>
   
-            <div className="flex flex-wrap gap-4">
+            {/* <div className="flex flex-wrap gap-4">
               <a href="https://dashboard.lingomeet.space">
                 <button className="bg-white text-green-700 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                   Get Started
@@ -33,7 +33,7 @@ const Hero = () => {
               </a>
               
               
-            </div>
+            </div> */}
   
             <div className="pt-4">
               <div className="flex items-center gap-2 text-green-100 text-sm">
