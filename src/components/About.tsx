@@ -1,8 +1,7 @@
-"use client"
 
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
-import { Check, ArrowRight, Users, Lightbulb, Globe, Zap } from "lucide-react"
+import { Check, Users, Lightbulb, Globe, Zap } from "lucide-react"
 
 export default function AboutSection() {
   // Refs for scroll animations
@@ -195,7 +194,7 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Call-to-Action Button */}
-          <motion.div variants={itemVariants}>
+          {/* <motion.div variants={itemVariants}>
             <motion.button
               className="group bg-gradient-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] text-white px-8 py-4 rounded-full font-semibold inline-flex items-center space-x-2 hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
@@ -205,7 +204,7 @@ export default function AboutSection() {
               <span>Learn More</span>
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </motion.button>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
