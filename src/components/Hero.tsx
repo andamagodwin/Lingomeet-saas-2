@@ -1,5 +1,3 @@
-"use client"
-
 import { motion } from "framer-motion"
 import { ArrowRight, Sparkles } from "lucide-react"
 
@@ -25,29 +23,19 @@ const Hero = () => {
 
   const float = {
     initial: { y: 0 },
-    animate: {
+    animate: { 
       y: [0, -10, 0],
       transition: {
         duration: 4,
-        repeat: Number.POSITIVE_INFINITY,
-        repeatType: "reverse",
+        repeat: Infinity, // Use Infinity instead of Number.POSITIVE_INFINITY
+        repeatType: "reverse" as const, // Cast to const to ensure type safety
         ease: "easeInOut",
       },
     },
   }
 
-  const pulse = {
-    initial: { scale: 1, opacity: 0.8 },
-    animate: {
-      scale: [1, 1.05, 1],
-      opacity: [0.8, 1, 0.8],
-      transition: {
-        duration: 3,
-        repeat: Number.POSITIVE_INFINITY,
-        ease: "easeInOut",
-      },
-    },
-  }
+
+
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] pt-24">
