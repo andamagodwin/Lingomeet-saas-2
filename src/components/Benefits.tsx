@@ -1,125 +1,205 @@
 "use client"
 
-import { useRef } from "react"
+import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
+import { Target, Globe, BookOpen, Users, BarChart3, Settings } from "lucide-react"
 
-const Benefits = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+export default function BenefitsSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const headingRef = useRef<HTMLDivElement>(null)
+
+  const isHeadingInView = useInView(headingRef, { once: true, amount: 0.5 })
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.1 })
 
   const benefits = [
     {
-      icon: "🎯", // Replace with an actual icon or SVG
+      icon: <Target className="w-6 h-6 text-white" />,
       title: "Enhanced Learning Experience",
       description:
         "Lingomeet provides real-time transcriptions and translations of online lectures, helping Ugandan students understand and engage better in their native languages.",
     },
     {
-      icon: "🌍",
+      icon: <Globe className="w-6 h-6 text-white" />,
       title: "Bridging Language Barriers",
       description:
         "With support for local languages, Lingomeet ensures that students who struggle with English can fully participate in and benefit from online lectures.",
     },
     {
-      icon: "📚",
+      icon: <BookOpen className="w-6 h-6 text-white" />,
       title: "AI-Powered Study Tools",
       description:
         "Automatically generate summaries, revision questions, and lesson notes from lectures, making it easier for students to review and retain information.",
     },
     {
-      icon: "🤝",
+      icon: <Users className="w-6 h-6 text-white" />,
       title: "Inclusive Education",
       description:
         "Lingomeet promotes inclusivity by ensuring that all students, regardless of their language proficiency, have equal access to quality education.",
     },
     {
-      icon: "📊",
+      icon: <BarChart3 className="w-6 h-6 text-white" />,
       title: "Engaging Learning Environment",
       description:
         "Interactive features like polls and quizzes keep students engaged and actively participating in online lectures.",
     },
     {
-      icon: "⚙️",
+      icon: <Settings className="w-6 h-6 text-white" />,
       title: "Seamless Integration",
       description:
         "Lingomeet integrates effortlessly with Google Meet, making it easy for educators and students to use without any technical hassle.",
     },
   ]
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  }
+
+  const headingAnimation = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  }
+
   return (
-    <div className="w-full min-h-screen bg-gradient-to-r from-green-600 to-green-800 flex flex-col justify-center items-center py-20 px-4 sm:px-8 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-green-400 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-green-300 rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white rounded-full opacity-5 blur-3xl"></div>
+    <div
+      ref={sectionRef}
+      className="w-full min-h-screen bg-gradient-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] flex flex-col justify-center items-center py-24 px-6 md:px-8 relative overflow-hidden"
+    >
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <svg
+          className="absolute top-0 left-0 w-full h-full opacity-10"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <radialGradient id="radialGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%" stopColor="white" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="white" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <circle cx="20" cy="20" r="25" fill="url(#radialGradient)" />
+          <circle cx="80" cy="80" r="35" fill="url(#radialGradient)" />
+          <circle cx="70" cy="20" r="15" fill="url(#radialGradient)" />
+          <circle cx="30" cy="70" r="20" fill="url(#radialGradient)" />
+        </svg>
       </div>
 
       {/* Section Heading */}
       <motion.div
+        ref={headingRef}
         className="text-center mb-16 max-w-3xl relative z-10"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
+        initial="hidden"
+        animate={isHeadingInView ? "visible" : "hidden"}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+            },
+          },
+        }}
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">How Lingomeet Transforms Online Learning</h2>
-        <div className="w-24 h-1 bg-green-300 mx-auto rounded-full mb-6"></div>
-        <p className="text-lg text-green-100 max-w-3xl mx-auto">
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold text-white mb-6 relative inline-block"
+          variants={headingAnimation}
+        >
+          How Lingomeet Transforms Online Learning
+        </motion.h2>
+
+        <motion.p className="text-lg text-white/90 mt-6" variants={headingAnimation}>
           Lingomeet is designed to make online lectures more accessible and effective for Ugandan students, breaking
           language barriers and enhancing comprehension in local languages. Together, we're advancing SDG 4: Quality
           Education.
-        </p>
+        </motion.p>
       </motion.div>
 
-      {/* Benefits Grid */}
-      <div className="w-full max-w-7xl mx-auto relative z-10" ref={ref}>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
-          {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              className="relative h-full"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="bg-white/10 backdrop-blur-md p-5 rounded-xl border border-white/20 h-full group hover:bg-white/15 transition-all duration-500 flex flex-col">
-                <div className="relative mb-4">
-                  <div className="absolute inset-0 bg-green-400/20 blur-md rounded-full transform group-hover:scale-110 transition-transform duration-500"></div>
-                  <div className="bg-gradient-to-br from-green-400/30 to-green-300/30 w-12 h-12 rounded-full flex items-center justify-center text-2xl relative z-10 border border-white/20 group-hover:border-green-300/50 transition-colors duration-300">
-                    {benefit.icon}
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-green-200 transition-colors duration-300">
-                  {benefit.title}
-                </h3>
-
-                <p className="text-green-100 text-sm flex-grow">{benefit.description}</p>
-
-                <motion.div
-                  className="w-0 group-hover:w-full h-0.5 bg-green-300/70 mt-5 rounded-full"
-                  transition={{ duration: 0.3 }}
-                ></motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Call to Action */}
+      {/* Benefits Cards Grid */}
       <motion.div
-        className="mt-16 relative z-10"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-        viewport={{ once: true }}
+        className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        variants={container}
+        initial="hidden"
+        animate={isSectionInView ? "show" : "hidden"}
+        viewport={{ once: true, margin: "-100px" }}
       >
-        
+        {benefits.map((benefit, index) => (
+          <motion.div
+            key={index}
+            className="relative group"
+            variants={item}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            whileHover={{ y: -8, transition: { type: "spring", stiffness: 400, damping: 17 } }}
+          >
+            <div
+              className="absolute inset-0 bg-white rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10 blur-xl"
+              style={{
+                transform: hoveredIndex === index ? "scale(1.1)" : "scale(0.9)",
+                transition: "transform 0.5s ease-out",
+              }}
+            ></div>
+
+            <div className="bg-white/10 backdrop-blur-md p-7 rounded-xl border border-white/20 group-hover:border-white/40 transition-all duration-300 h-full flex flex-col">
+              <div
+                className="bg-gradient-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] rounded-full w-14 h-14 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
+                style={{
+                  backgroundPosition: `${index * 16.6}% center`,
+                }}
+              >
+                {benefit.icon}
+              </div>
+
+              <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-white transition-colors duration-300">
+                {benefit.title}
+              </h3>
+
+              <p className="text-white/80 text-sm flex-grow">{benefit.description}</p>
+
+              <motion.div
+                className="w-0 group-hover:w-full h-0.5 bg-white mt-5 transition-all duration-500 rounded-full"
+                initial={{ width: 0 }}
+                animate={hoveredIndex === index ? { width: "100%" } : { width: 0 }}
+                transition={{ duration: 0.5 }}
+              ></motion.div>
+
+              <motion.div
+                className="flex items-center mt-4 text-white/0 group-hover:text-white/80 transition-colors duration-300"
+                initial={{ opacity: 0, y: 10 }}
+                animate={hoveredIndex === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                transition={{ duration: 0.3 }}
+              ></motion.div>
+            </div>
+          </motion.div>
+        ))}
       </motion.div>
     </div>
   )
 }
-
-export default Benefits
-
