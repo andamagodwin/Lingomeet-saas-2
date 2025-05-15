@@ -101,6 +101,7 @@ export default function FeaturesSection() {
 
   return (
     <div
+      id="features"
       ref={sectionRef}
       className="w-full min-h-screen bg-gradient-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] flex flex-col justify-center items-center py-24 px-6 md:px-8 relative overflow-hidden"
     >

@@ -1,6 +1,6 @@
 export const navMenu = [
-    { name: 'Home', link: '/' },
-    { name: 'About', link: '/' },
-    { name: 'Features', link: '/' },
+    { name: 'Home', link: '/#home' },
+    { name: 'About', link: '/#about' },
+    { name: 'Features', link: '/#features' },
 ]
 

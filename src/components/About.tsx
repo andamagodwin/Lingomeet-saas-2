@@ -47,6 +47,7 @@ export default function AboutSection() {
 
   return (
     <section
+      id="about"
       ref={sectionRef}
       className="w-full min-h-screen bg-gradient-to-b from-white to-gray-50 py-24 px-6 md:px-8 relative overflow-hidden"
     >

@@ -54,17 +54,18 @@ const Nav = ({ isMobile = false, isScrolled = false, closeMobileMenu }: NavProps
         </motion.a>
       ))}
 
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-          isScrolled
-            ? "bg-gradient-to-r from-[#2A7B9B] to-[#57C785] text-white shadow-md hover:shadow-lg"
-            : "bg-white/20 backdrop-blur-sm text-white hover:bg-white/30"
-        }`}
-      >
-        Contact Us
-      </motion.button>
+      <motion.a
+  href="mailto:andamagodwinezra@gmail.com"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+    isScrolled
+      ? "bg-gradient-to-r from-[#2A7B9B] to-[#57C785] text-white shadow-md hover:shadow-lg"
+      : "bg-white/20 backdrop-blur-sm text-white hover:bg-white/30"
+  }`}
+>
+  Contact Us
+</motion.a>
     </motion.div>
   )
 }

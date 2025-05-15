@@ -38,7 +38,9 @@ const Hero = () => {
 
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] pt-24">
+    <div 
+      id="home"
+      className="relative w-full min-h-screen overflow-hidden bg-gradient-to-r from-[#2A7B9B] via-[#57C785] to-[#EDDD53] pt-24">
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
@@ -88,15 +90,15 @@ const Hero = () => {
             </motion.p>
 
             <motion.div variants={fadeIn} className="flex flex-wrap gap-4 pt-2">
-              <motion.a
-                href="https://dashboard.lingomeet.space"
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center bg-white text-[#2A7B9B] px-8 py-3.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition duration-300 group"
+                className="inline-flex items-center bg-gray-300 text-gray-500 px-8 py-3.5 rounded-full font-semibold shadow-lg cursor-not-allowed transition duration-300 group"
               >
                 Get Started
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </motion.a>
+                <span className="ml-2 text-xs text-gray-400">(Coming Soon)</span>
+              </motion.div>
 
               <motion.a
                 href="#features"

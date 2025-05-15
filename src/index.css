@@ -69,6 +69,10 @@
     text-foreground;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   ::-webkit-scrollbar {
     @apply w-2
     h-2;
